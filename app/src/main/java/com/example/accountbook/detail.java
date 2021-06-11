@@ -20,8 +20,6 @@ import static com.example.accountbook.R.drawable.round_button1;
 
 public class detail extends AppCompatActivity {
 
-    EditText et_Date1;  //시작 날짜
-    EditText et_Date2;  //마지막 날짜
     TextView recent;  //최신 순
     TextView old;     //오래된 순
     TextView high;   //금액 높은 순
@@ -32,6 +30,10 @@ public class detail extends AppCompatActivity {
     int end_year;
     int end_month;
     int end_day;
+    int income_flag = 0;
+    int outcome_flag = 0;
+
+
     Calendar myCalendar1 = Calendar.getInstance();
     Calendar myCalendar2 = Calendar.getInstance();
     ArrayList<SQLDatabase> records = new ArrayList<>();
@@ -63,13 +65,13 @@ public class detail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        et_Date1 = (EditText) findViewById(R.id.et_date1);
-        et_Date2 = (EditText) findViewById(R.id.et_date2);
+        et_date1 = (EditText) findViewById(R.id.et_date1);
+        et_date2 = (EditText) findViewById(R.id.et_date2);
         recent = (TextView) findViewById(R.id.recent);
         old = (TextView) findViewById(R.id.old);
         high = (TextView) findViewById(R.id.high);
         low = (TextView) findViewById(R.id.low);
-        et_Date1.setOnClickListener(new View.OnClickListener() {
+        et_date1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new DatePickerDialog(detail.this, myDatePicker1, myCalendar1.get(Calendar.YEAR), myCalendar1.get(Calendar.MONTH), myCalendar1.get(Calendar.DAY_OF_MONTH)).show();
@@ -105,7 +107,6 @@ public class detail extends AppCompatActivity {
                 high.setTextColor(Color.BLACK);
                 low.setBackgroundResource(R.drawable.round_button2);
                 low.setTextColor(Color.BLACK);
-
             }
         });
         high.setOnClickListener(new View.OnClickListener() {
@@ -134,14 +135,15 @@ public class detail extends AppCompatActivity {
                 low.setTextColor(Color.WHITE);
             }
         });
-
     }
-    
+
     private void updateLabel1() {
         String myFormat = "yyyy / MM / dd";    // 출력형식   2018/11/28
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.KOREA);
         EditText et_date1 = (EditText) findViewById(R.id.et_date1);
+        et_date1.setText(sdf.format(myCalendar1.getTime()));
     }
+
     private void updateLabel2(){
         String myFormat = "yyyy / MM / dd";    // 출력형식   2018/11/28
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.KOREA);
