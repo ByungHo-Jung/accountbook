@@ -37,7 +37,7 @@
                 android:background="@drawable/border"
                 android:layout_marginLeft="10dp"
                 android:textSize="15dp"
-                android:hint="방법을 입력하세요"
+                android:hint="날짜를 입력하세요"
                 android:clickable="true"
                 android:editable="false"
                 android:focusable="false"/>
@@ -59,24 +59,7 @@
                     android:textSize="15dp"
                     android:hint="금액을 입력하세요"/>
         </LinearLayout>
-        <LinearLayout
-            android:layout_marginLeft="25dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:background="@drawable/what"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/border"
-                android:layout_marginLeft="10dp"
-                android:textSize="15dp"
-                android:hint="용도를 입력하세요"/>
-        </LinearLayout>
+
         <LinearLayout
             android:layout_marginLeft="25dp"
             android:layout_width="match_parent"

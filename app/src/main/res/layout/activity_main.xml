@@ -23,37 +23,42 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <LinearLayout
-            android:layout_marginLeft="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center">
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp">
+                android:layout_height="wrap_content">
                 <Button
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:backgroundTint="#FFEB3B"/>
                 <TextView
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="2dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="수입"/>
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
             <Button
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:backgroundTint="#DE91F2"/>
             <TextView
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="지출"/>
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
@@ -76,7 +81,7 @@
         <Button
             android:id="@+id/checkbtn"
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_gravity="center"
             android:backgroundTint="#7DB97F"
             android:textSize="20dp"
@@ -86,8 +91,8 @@
 
         <Button
             android:id="@+id/intentButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
             android:layout_gravity="center"
             android:backgroundTint="#7DB97F"
             android:gravity="center"
@@ -97,8 +102,8 @@
 
         <Button
             android:id="@+id/DBdeleteButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
             android:layout_gravity="center"
             android:backgroundTint="#7DB97F"
             android:gravity="center"
