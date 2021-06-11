@@ -18,37 +18,42 @@
             android:text="수입/지출 상세확인"/>
     </LinearLayout>
 
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/detail_inoutgroup"
-        android:orientation="horizontal"
-        android:layout_marginTop="5dp"
-        android:layout_gravity="center">
-
-        <RadioButton
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="15dp"
+    android:gravity="left">
+        <TextView
             android:id="@+id/detail_income"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:background="@drawable/round_button"
+            android:padding="6dp"
+            android:gravity="center"
+            android:textSize="20sp"
             android:layout_weight="1"
             android:text="수입" />
 
-        <RadioButton
+        <TextView
             android:id="@+id/detail_outcome"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:background="@drawable/round_button"
+            android:padding="6dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:textSize="20sp"
             android:layout_weight="1"
             android:text="지출" />
-    </RadioGroup>
+</LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="20dp">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -99,7 +104,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:gravity="center">
 
         <TextView
@@ -151,15 +156,23 @@
             android:clickable="true"/>
 
     </LinearLayout>
-
-    <Button
-        android:layout_gravity="right"
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:layout_marginTop="15dp">
+    <TextView
         android:id="@+id/detail_search"
-        android:padding="10dp"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/ic_baseline_search_24"/>
+        android:padding="5dp"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:text="조회"
+        android:background="@drawable/round_button1"/>
 
+</LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/detail_rcv"
         android:layout_width="match_parent"

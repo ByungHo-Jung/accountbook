@@ -31,7 +31,9 @@ public class detail extends AppCompatActivity {
     TextView old;     //오래된 순
     TextView high;   //금액 높은 순
     TextView low;    //금액 낮은 순
-    Button search;
+    TextView income;
+    TextView outcome;
+    TextView search;
     int start_year = -1;
     int start_month = -1;
     int start_day = -1;
@@ -91,20 +93,28 @@ public class detail extends AppCompatActivity {
         old = (TextView) findViewById(R.id.old);
         high = (TextView) findViewById(R.id.high);
         low = (TextView) findViewById(R.id.low);
-        radioGroup = findViewById(R.id.detail_inoutgroup);
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        income = (TextView) findViewById(R.id.detail_income);
+        outcome = (TextView) findViewById(R.id.detail_outcome);
+        income.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId){
-                    case R.id.detail_income:
-                        income_flag=1;
-                        outcome_flag=0;
-                        break;
-                    case R.id.detail_outcome:
-                        income_flag = 0;
-                        outcome_flag = 1;
-                        break;
-                }
+            public void onClick(View v) {
+                income.setBackgroundResource(round_button1);
+                income.setTextColor(Color.WHITE);
+                outcome.setBackgroundResource(R.drawable.round_button);
+                outcome.setTextColor(Color.GRAY);
+                income_flag=1;
+                outcome_flag=0;
+            }
+        });
+        outcome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                income.setBackgroundResource(R.drawable.round_button);
+                income.setTextColor(Color.GRAY);
+                outcome.setBackgroundResource(R.drawable.round_button1);
+                outcome.setTextColor(Color.WHITE);
+                income_flag=0;
+                outcome_flag=1;
             }
         });
         et_date1.setOnClickListener(new View.OnClickListener() {
