@@ -2,6 +2,7 @@ package com.example.accountbook;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -15,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     ImageButton addbutton;
     Button intentbutton;
-
+    Button checkbtn;
     String name;
     String type;
     int year;
@@ -37,6 +38,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        checkbtn = (Button)findViewById(R.id.checkbtn);
+        checkbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(getApplicationContext(),detail.class);
+                startActivity(it);
+            }
+        });
         intentbutton = (Button)findViewById(R.id.intentButton);
         intentbutton.setOnClickListener(new View.OnClickListener() {
             @Override

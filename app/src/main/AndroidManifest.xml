@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Accountbook">
         <activity android:name=".SqlActivity"></activity>
-        <activity android:name=".detail" />
+        <activity android:name=".detail"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity android:name=".register" />
         <activity android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">

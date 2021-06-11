@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="30sp"
-        android:text="가계부 등록"/>
+        android:textColor="#575757"
+        android:text="수입/지출 등록"/>
 </LinearLayout>
     <LinearLayout
         android:layout_marginTop="30dp"
@@ -28,12 +29,12 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="30dp"
+                android:layout_width="27dp"
                 android:layout_height="30dp"
-                android:background="@drawable/title" />
+                android:background="@drawable/title1" />
             <EditText
                 android:id="@+id/Input_Title"
-                android:layout_width="250dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/border"
                 android:layout_marginLeft="10dp"
@@ -46,20 +47,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:background="@drawable/calender"/>
+                android:background="@drawable/calendar2" />
             <EditText
                 android:id="@+id/et_date"
-                android:layout_width="250dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/border"
                 android:layout_marginLeft="10dp"
                 android:textSize="15dp"
                 android:hint="날짜를 입력하세요"
                 android:clickable="true"
-                android:onClick=""
                 android:editable="false" />
         </LinearLayout>
         <LinearLayout
@@ -70,10 +71,10 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@drawable/money"/>
+                    android:background="@drawable/dollar"/>
                 <EditText
-                    android:id="@+id/nput_Money"
-                    android:layout_width="250dp"
+                    android:id="@+id/Input_Money"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/border"
                     android:layout_marginLeft="10dp"
@@ -90,7 +91,7 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:background="@drawable/what"/>
+                android:background="@drawable/income"/>
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="25dp"
@@ -129,7 +130,7 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:background="@drawable/how" />
+                android:background="@drawable/knowhow" />
 
             <RadioGroup
                 android:id="@+id/PayTypeRadioGroup"
@@ -177,7 +178,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="등록"
-            android:textSize="18sp"
+            android:textSize="23sp"
             android:textColor="#000000" />
 
         <TextView
@@ -186,7 +187,7 @@
             android:layout_height="35dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="18sp"
+            android:textSize="23sp"
             android:text="취소"
             android:textColor="#000000" />
     </LinearLayout>

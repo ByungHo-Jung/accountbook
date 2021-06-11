@@ -40,37 +40,48 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:layout_marginTop="20dp">
-        <ImageView
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:background="@drawable/how"/>
+                android:layout_marginLeft="20dp"
+            android:background="@drawable/calendar1"/>
         <EditText
             android:id="@+id/et_date1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@drawable/border"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="20dp"
             android:textSize="15dp"
             android:hint="시작 날짜"
             android:clickable="true"
             android:editable="false"
             android:focusable="false"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
         <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:background="@drawable/how"
-            android:layout_marginLeft="50dp"/>
+            android:background="@drawable/calendar1"
+            android:layout_marginLeft="30dp"/>
         <EditText
             android:id="@+id/et_date2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
             android:background="@drawable/border"
-            android:layout_marginLeft="10dp"
             android:textSize="15dp"
             android:hint="마지막 날짜"
             android:clickable="true"
             android:editable="false"
             android:focusable="false"/>
+        </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -78,36 +89,54 @@
         android:orientation="horizontal"
         android:layout_marginTop="20dp"
         android:gravity="center">
-        <Button
-            android:layout_marginLeft="2dp"
+
+        <TextView
+            android:id="@+id/recent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/round_button2"
+            android:padding="6dp"
             android:text="최신 순"
-            android:textSize="12dp"
-            android:textStyle="bold"/>
-        <Button
-            android:layout_marginLeft="2dp"
+            android:textSize="18sp"
+            android:clickable="true"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/old"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/round_button2"
+            android:clickable="true"
+            android:padding="6dp"
             android:text="오래된 순"
-            android:textSize="12dp"
-            android:textStyle="bold"/>
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-        <Button
-            android:layout_marginLeft="2dp"
+        <TextView
+            android:id="@+id/high"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:text="금액 높은 순"
-            android:textSize="12dp"
-            android:textStyle="bold"/>
+            android:background="@drawable/round_button2"
+            android:padding="6dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:clickable="true"/>
 
-        <Button
+        <TextView
+            android:id="@+id/low"
             android:layout_marginLeft="2dp"
+            android:padding="6dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/round_button2"
             android:text="금액 낮은 순"
-            android:textSize="12dp"
-            android:textStyle="bold"/>
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:clickable="true"/>
 
     </LinearLayout>
     <ScrollView

@@ -73,7 +73,6 @@ public class AddDialog extends Dialog {
                 new DatePickerDialog(context, myDatePicker, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-        datePicker = findViewById(R.id.vDatePicker);
         MoneyText = findViewById(R.id.Input_Money);
         TitleText = findViewById(R.id.Input_Title);
         CashRadio = findViewById(R.id.CashRadio);
