@@ -137,6 +137,7 @@ public class AddDialog extends Dialog {
                 int year = myCalendar.get(Calendar.YEAR);
                 int month = myCalendar.get(Calendar.MONTH);
                 int day = myCalendar.get(Calendar.DAY_OF_MONTH);
+                String s = MoneyText.getText().toString();
                 int money = Integer.parseInt(MoneyText.getText().toString());
                 if(name == null){
                     Toast.makeText(getContext(), "지출 이름을 입력해주세요!", Toast.LENGTH_SHORT);

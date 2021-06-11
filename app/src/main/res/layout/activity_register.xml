@@ -74,7 +74,7 @@
                     android:background="@drawable/dollar"/>
                 <EditText
                     android:id="@+id/Input_Money"
-                    android:layout_width="match_parent"
+                    android:layout_width="250dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/border"
                     android:layout_marginLeft="10dp"

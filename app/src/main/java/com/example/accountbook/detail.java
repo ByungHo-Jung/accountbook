@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -33,6 +34,11 @@ public class detail extends AppCompatActivity {
     int end_day;
     Calendar myCalendar1 = Calendar.getInstance();
     Calendar myCalendar2 = Calendar.getInstance();
+    ArrayList<SQLDatabase> records = new ArrayList<>();
+
+    EditText et_date1;
+    EditText et_date2;
+
     DatePickerDialog.OnDateSetListener myDatePicker1 = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -51,6 +57,7 @@ public class detail extends AppCompatActivity {
             updateLabel2();
         }
     };
+
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +75,7 @@ public class detail extends AppCompatActivity {
                 new DatePickerDialog(detail.this, myDatePicker1, myCalendar1.get(Calendar.YEAR), myCalendar1.get(Calendar.MONTH), myCalendar1.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-        et_Date2.setOnClickListener(new View.OnClickListener() {
+        et_date2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new DatePickerDialog(detail.this, myDatePicker2, myCalendar2.get(Calendar.YEAR), myCalendar2.get(Calendar.MONTH), myCalendar2.get(Calendar.DAY_OF_MONTH)).show();
@@ -129,11 +136,11 @@ public class detail extends AppCompatActivity {
         });
 
     }
+    
     private void updateLabel1() {
         String myFormat = "yyyy / MM / dd";    // 출력형식   2018/11/28
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.KOREA);
         EditText et_date1 = (EditText) findViewById(R.id.et_date1);
-        et_date1.setText(sdf.format(myCalendar1.getTime()));
     }
     private void updateLabel2(){
         String myFormat = "yyyy / MM / dd";    // 출력형식   2018/11/28
