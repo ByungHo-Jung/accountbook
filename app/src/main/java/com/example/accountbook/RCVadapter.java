@@ -40,11 +40,9 @@ public class RCVadapter extends RecyclerView.Adapter<RCVadapter.ViewHolder> {
         holder.name.setText(db.getName());
         holder.money.setText(""+db.getMoney()+"원");
         if(db.type==null){
-            holder.type.setText("수입");
-            holder.outcometype.setVisibility(View.INVISIBLE);
+            holder.outcometype.setVisibility(View.GONE);
         }
         else{
-            holder.type.setText("지출");
             holder.outcometype.setVisibility(View.VISIBLE);
             holder.outcometype.setText(db.getType());
         }
@@ -59,21 +57,28 @@ public class RCVadapter extends RecyclerView.Adapter<RCVadapter.ViewHolder> {
         return records.size();
     }
 
+    public void remove(int pos){
+        try{
+            records.remove(pos);
+            notifyItemRemoved(pos);
+        }
+        catch (IndexOutOfBoundsException ex){
+            ex.printStackTrace();
+        }
+    }
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView name;
         TextView money;
-        TextView type;
         TextView outcometype;
         TextView date;
-        Button delete;
+        TextView delete;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             name = itemView.findViewById(R.id.detail_name);
             money = itemView.findViewById(R.id.detail_money);
-            type = itemView.findViewById(R.id.detail_type);
             outcometype = itemView.findViewById(R.id.detail_outcometype);
             date = itemView.findViewById(R.id.detail_date);
 
@@ -92,6 +97,7 @@ public class RCVadapter extends RecyclerView.Adapter<RCVadapter.ViewHolder> {
                             SQLiteDatabase database1 = incomeDBManager.getReadableDatabase();
                             String s = "Delete from Income where year=" + year + " and month=" + month + " and day=" + day + " and name='" + tempname + "'";
                             database1.execSQL(s);
+                            remove(getAdapterPosition());
                         }catch (SQLException e){
 
                         }
@@ -102,6 +108,7 @@ public class RCVadapter extends RecyclerView.Adapter<RCVadapter.ViewHolder> {
                             SQLiteDatabase database2 = outcomeDBManager.getReadableDatabase();
                             String s = "Delete from Outcome where year=" + year + " and month=" + month + " and day=" + day + " and name='" + tempname + "'";
                             database2.execSQL(s);
+                            remove(getAdapterPosition());
                         }catch(SQLException e){
 
                         }
@@ -110,5 +117,6 @@ public class RCVadapter extends RecyclerView.Adapter<RCVadapter.ViewHolder> {
             });
 
         }
+
     }
 }

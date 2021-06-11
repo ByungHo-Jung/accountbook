@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
             chart.setDrawHoleEnabled(false);
             chart.getDescription().setEnabled(false);
             chart.setData(data);
+            chart.invalidate();
 
         }catch (SQLException e){
 
@@ -180,7 +181,6 @@ public class MainActivity extends AppCompatActivity {
             values.add(new PieEntry(val, "수입"));
             val = (float) (totaloutcome);
             values.add(new PieEntry(val, "지출"));
-
             PieDataSet set1 = new PieDataSet(values, "");
 
             // create a data object with the data sets
@@ -196,7 +196,11 @@ public class MainActivity extends AppCompatActivity {
             chart.setDrawHoleEnabled(false);
             chart.getDescription().setEnabled(false);
             // set data
+            chart.invalidate();
             chart.setData(data);
+            data.notifyDataChanged();
+            chart.notifyDataSetChanged();
+            chart.invalidate();
 
         }catch (SQLException e){
 

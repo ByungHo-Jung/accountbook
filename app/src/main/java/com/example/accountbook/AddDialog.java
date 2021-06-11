@@ -192,6 +192,7 @@ public class AddDialog extends Dialog {
                             Toast.makeText(getContext(), "Failed to Save", Toast.LENGTH_SHORT);
                         }
                     }
+
                 }
 
                 dismiss();
