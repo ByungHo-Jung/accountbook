@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".detail">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -16,30 +17,38 @@
             android:textSize="30dp"
             android:text="수입/지출 상세확인"/>
     </LinearLayout>
-    <LinearLayout
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
+
+    <RadioGroup
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-        <CheckBox
-            android:id="@+id/income1"
-            android:layout_marginRight="70dp"
+        android:id="@+id/detail_inoutgroup"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center">
+
+        <RadioButton
+            android:id="@+id/detail_income"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="수입"/>
-        <CheckBox
-            android:id="@+id/expense1"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:text="수입" />
+
+        <RadioButton
+            android:id="@+id/detail_outcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="지출"/>
-    </LinearLayout>
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:text="지출" />
+    </RadioGroup>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="10dp">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -61,6 +70,7 @@
             android:editable="false"
             android:focusable="false"/>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -82,6 +92,7 @@
             android:editable="false"
             android:focusable="false"/>
         </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -119,10 +130,10 @@
             android:id="@+id/high"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="8dp"
             android:text="금액 높은 순"
             android:background="@drawable/round_button2"
-            android:padding="6dp"
+            android:padding="5dp"
             android:textSize="18sp"
             android:textStyle="bold"
             android:clickable="true"/>
@@ -130,7 +141,7 @@
         <TextView
             android:id="@+id/low"
             android:layout_marginLeft="2dp"
-            android:padding="6dp"
+            android:padding="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/round_button2"
@@ -141,10 +152,18 @@
 
     </LinearLayout>
 
+    <Button
+        android:layout_gravity="right"
+        android:id="@+id/detail_search"
+        android:padding="10dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_baseline_search_24"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/detail_rcv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    
+
 </LinearLayout>

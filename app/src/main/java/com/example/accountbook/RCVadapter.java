@@ -1,6 +1,9 @@
 package com.example.accountbook;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +44,7 @@ public class RCVadapter extends RecyclerView.Adapter<RCVadapter.ViewHolder> {
             holder.outcometype.setVisibility(View.INVISIBLE);
         }
         else{
-            holder.type.setText("수입");
+            holder.type.setText("지출");
             holder.outcometype.setVisibility(View.VISIBLE);
             holder.outcometype.setText(db.getType());
         }
@@ -78,7 +81,31 @@ public class RCVadapter extends RecyclerView.Adapter<RCVadapter.ViewHolder> {
             delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //데이터 삭제
+                    SQLDatabase temp = records.get(getAdapterPosition());
+                    int year = temp.getYear();
+                    int month = temp.getMonth();
+                    int day = temp.getDay();
+                    String tempname = temp.getName();
+                    if(temp.getType() == null){
+                        try {
+                            IncomeDBManager incomeDBManager = new IncomeDBManager(context);
+                            SQLiteDatabase database1 = incomeDBManager.getReadableDatabase();
+                            String s = "Delete from Income where year=" + year + " and month=" + month + " and day=" + day + " and name='" + tempname + "'";
+                            database1.execSQL(s);
+                        }catch (SQLException e){
+
+                        }
+                    }
+                    else{
+                        try {
+                            OutcomeDBManager outcomeDBManager = new OutcomeDBManager(context);
+                            SQLiteDatabase database2 = outcomeDBManager.getReadableDatabase();
+                            String s = "Delete from Outcome where year=" + year + " and month=" + month + " and day=" + day + " and name='" + tempname + "'";
+                            database2.execSQL(s);
+                        }catch(SQLException e){
+
+                        }
+                    }
                 }
             });
 
