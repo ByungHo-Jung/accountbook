@@ -47,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
         int nowday = cal.get(Calendar.DATE);
 
         try {
-            int totalincome = 0;
+            int totalincome = 1;
+            totalincome=0;
             int totaloutcome = 0;
 
             IncomeDBManager incomeDBManager = new IncomeDBManager(MainActivity.this);
