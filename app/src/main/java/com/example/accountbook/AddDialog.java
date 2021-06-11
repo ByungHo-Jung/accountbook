@@ -135,9 +135,9 @@ public class AddDialog extends Dialog {
             @Override
             public void onClick(View v) {
                 String name = TitleText.getText().toString();
-                int year = datePicker.getYear();
-                int month = datePicker.getMonth();
-                int day = datePicker.getDayOfMonth();
+                int year = myCalendar.get(Calendar.YEAR);
+                int month = myCalendar.get(Calendar.MONTH);
+                int day = myCalendar.get(Calendar.DAY_OF_MONTH);
                 int money = Integer.parseInt(MoneyText.getText().toString());
                 if(name == null){
                     Toast.makeText(getContext(), "지출 이름을 입력해주세요!", Toast.LENGTH_SHORT);
@@ -199,9 +199,8 @@ public class AddDialog extends Dialog {
         });
     }
     private void updateLabel() {
-        String myFormat = "yyyy/MM/dd";    // 출력형식   2018/11/28
+        String myFormat = "yyyy / MM / dd";    // 출력형식   2018/11/28
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.KOREA);
-
         EditText et_date = (EditText) findViewById(R.id.et_date);
         et_date.setText(sdf.format(myCalendar.getTime()));
     }
