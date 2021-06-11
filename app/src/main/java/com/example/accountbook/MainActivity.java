@@ -27,9 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private PieChart chart;
     ImageButton addbutton;
     TextView date;
-    Button intentbutton;
     Button chkbutton;
-    Button deletebutton;
 
     String name;
     String type;
@@ -133,52 +131,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        intentbutton = (Button)findViewById(R.id.intentButton);
-        intentbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    IncomeDBManager incomeDBManager = new IncomeDBManager(MainActivity.this);
-                    SQLiteDatabase database1 = incomeDBManager.getReadableDatabase();
-                    Cursor cursor = database1.rawQuery("SELECT * FROM Income", null);
-                    while (cursor.moveToNext()) {
-                        year = cursor.getInt(cursor.getColumnIndex("year"));
-                        month = cursor.getInt(cursor.getColumnIndex("month"));
-                        day = cursor.getInt(cursor.getColumnIndex("day"));
-                        money = cursor.getInt(cursor.getColumnIndex("money"));
-                        name = cursor.getString(cursor.getColumnIndex("name"));
-                        System.out.println("year:" + year + "/month:" + month + "/day:" + day + "/money:" + money + "/name:" + name);
-                    }
-                    OutcomeDBManager outcomeDBManager = new OutcomeDBManager(MainActivity.this);
-                    SQLiteDatabase database2 = outcomeDBManager.getReadableDatabase();
-                    cursor = database2.rawQuery("SELECT * FROM Outcome", null);
-                    while (cursor.moveToNext()) {
-                        year = cursor.getInt(cursor.getColumnIndex("year"));
-                        month = cursor.getInt(cursor.getColumnIndex("month"));
-                        day = cursor.getInt(cursor.getColumnIndex("day"));
-                        money = cursor.getInt(cursor.getColumnIndex("money"));
-                        name = cursor.getString(cursor.getColumnIndex("name"));
-                        type = cursor.getString(cursor.getColumnIndex("type"));
-                        System.out.println("year:" + year + "/month:" + month + "/day:" + day + "/money:" + money + "/name:" + name+"/type:"+type);
-                    }
-                }catch (SQLException e){
-
-                }
-            }
-        });
-
-        deletebutton = findViewById(R.id.DBdeleteButton);
-        deletebutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                IncomeDBManager incomeDBManager = new IncomeDBManager(MainActivity.this);
-                SQLiteDatabase database1 = incomeDBManager.getReadableDatabase();
-                database1.execSQL("Delete from Income");
-                OutcomeDBManager outcomeDBManager = new OutcomeDBManager(MainActivity.this);
-                SQLiteDatabase database2 = outcomeDBManager.getReadableDatabase();
-                database2.execSQL("Delete from Outcome");
-            }
-        });
 
     }
 
@@ -237,7 +189,6 @@ public class MainActivity extends AppCompatActivity {
             // black lines and points
             set1.setColors(ColorTemplate.COLORFUL_COLORS);
             set1.setSliceSpace(3f);
-            set1.setSelectionShift(5f);
 
             data.setValueTextSize(10f);
             data.setValueTextColor(Color.YELLOW);
