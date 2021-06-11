@@ -1,5 +1,6 @@
 package com.example.accountbook;
 
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,12 +12,17 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class AddDialog extends Dialog {
 
@@ -28,31 +34,52 @@ public class AddDialog extends Dialog {
     DatePicker datePicker;
     EditText MoneyText;
     EditText TitleText;
+    EditText et_Date;
     TextView OKButton;
     TextView NOButton;
+    LinearLayout expenselayout;
     SQLiteDatabase sqLiteDatabase;
     IncomeDBManager incomeDBManager;
     OutcomeDBManager outcomeDBManager;
     int payflag = 0; // 0:수입, 1:소비
     int paytypeflag; // 0:현금, 1:카드, 2:계좌
+    Context context;
 
+    Calendar myCalendar = Calendar.getInstance();
+
+    DatePickerDialog.OnDateSetListener myDatePicker = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+            myCalendar.set(Calendar.YEAR, year);
+            myCalendar.set(Calendar.MONTH, month);
+            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            updateLabel();
+        }
+    };
     public AddDialog(@NonNull Context context) {
         super(context);
+        this.context = context;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.dialog_add);
-
+        setContentView(R.layout.activity_register);
+        et_Date = (EditText) findViewById(R.id.et_date);
+        et_Date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View v){
+                new DatePickerDialog(context, myDatePicker, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
         datePicker = findViewById(R.id.vDatePicker);
         MoneyText = findViewById(R.id.Input_Money);
         TitleText = findViewById(R.id.Input_Title);
         CashRadio = findViewById(R.id.CashRadio);
         CardRadio = findViewById(R.id.CardRadio);
         AFRadio = findViewById(R.id.AFRadio);
-
+        expenselayout = findViewById(R.id.expenselayout);
         PayRadioGroup = findViewById(R.id.PayTypeRadioGroup);
         PayRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -85,17 +112,10 @@ public class AddDialog extends Dialog {
                 }
                 RadioButton IncomeRadioButton = findViewById(R.id.IncomeRadioButton);
                 if(IncomeRadioButton.isChecked()){
-                    PayRadioGroup.setVisibility(View.INVISIBLE);
-                    CashRadio.setVisibility(View.INVISIBLE);
-                    CardRadio.setVisibility(View.INVISIBLE);
-                    AFRadio.setVisibility(View.INVISIBLE);
+                    expenselayout.setVisibility(View.INVISIBLE);
                 }
                 else{
-
-                    PayRadioGroup.setVisibility(View.VISIBLE);
-                    CashRadio.setVisibility(View.VISIBLE);
-                    CardRadio.setVisibility(View.VISIBLE);
-                    AFRadio.setVisibility(View.VISIBLE);
+                    expenselayout.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -177,5 +197,12 @@ public class AddDialog extends Dialog {
                 dismiss();
             }
         });
+    }
+    private void updateLabel() {
+        String myFormat = "yyyy/MM/dd";    // 출력형식   2018/11/28
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.KOREA);
+
+        EditText et_date = (EditText) findViewById(R.id.et_date);
+        et_date.setText(sdf.format(myCalendar.getTime()));
     }
 }
