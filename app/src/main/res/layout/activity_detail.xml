@@ -72,45 +72,48 @@
             android:editable="false"
             android:focusable="false"/>
     </LinearLayout>
-    <LinearLayout
+
+    <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:gravity="center">
-        <Button
-            android:layout_marginLeft="2dp"
-            android:layout_width="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/latest"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="최신 순"
             android:textSize="12dp"
-            android:textStyle="bold"/>
-        <Button
-            android:layout_marginLeft="2dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="오래된 순"
-            android:textSize="12dp"
-            android:textStyle="bold"/>
+            android:checked="true"/>
 
-        <Button
-            android:layout_marginLeft="2dp"
-            android:layout_width="wrap_content"
+        <RadioButton
+            android:id="@+id/oldest"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="금액 높은 순"
+            android:layout_weight="1"
             android:textSize="12dp"
-            android:textStyle="bold"/>
+            android:text="오래된 순" />
 
-        <Button
-            android:layout_marginLeft="2dp"
-            android:layout_width="wrap_content"
+        <RadioButton
+            android:id="@+id/most_expensive"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="금액 낮은 순"
+            android:layout_weight="1"
             android:textSize="12dp"
-            android:textStyle="bold"/>
+            android:text="금액 높은 순" />
 
-    </LinearLayout>
-    <ScrollView
+        <RadioButton
+            android:id="@+id/cheapest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="12dp"
+            android:text="금액 낮은 순" />
+    </RadioGroup>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/detail_rcv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"/>
 </LinearLayout>
