@@ -17,7 +17,6 @@ import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -50,11 +49,13 @@ public class MainActivity extends AppCompatActivity {
         try {
             int totalincome = 0;
             int totaloutcome = 0;
-            int total = 0;
+
             IncomeDBManager incomeDBManager = new IncomeDBManager(MainActivity.this);
             SQLiteDatabase database1 = incomeDBManager.getReadableDatabase();
+
             Cursor cursor = database1.rawQuery("SELECT * FROM Income " +
                     "where year = "+nowyear+" and month = "+ nowmonth+" and day between 1 and "+nowday, null);
+
             while (cursor.moveToNext()) {
                 year = cursor.getInt(cursor.getColumnIndex("year"));
                 month = cursor.getInt(cursor.getColumnIndex("month"));
@@ -63,10 +64,13 @@ public class MainActivity extends AppCompatActivity {
                 name = cursor.getString(cursor.getColumnIndex("name"));
                 totalincome += money;
             }
+
             OutcomeDBManager outcomeDBManager = new OutcomeDBManager(MainActivity.this);
             SQLiteDatabase database2 = outcomeDBManager.getReadableDatabase();
+
             cursor = database2.rawQuery("SELECT * FROM Outcome " +
                     "where year = "+nowyear+" and month = "+ nowmonth+" and day between 1 and "+nowday, null);
+
             while (cursor.moveToNext()) {
                 year = cursor.getInt(cursor.getColumnIndex("year"));
                 month = cursor.getInt(cursor.getColumnIndex("month"));
@@ -88,11 +92,9 @@ public class MainActivity extends AppCompatActivity {
 
             PieDataSet set1 = new PieDataSet(values, "");
 
-            // create a data object with the data sets
             PieData data = new PieData(set1);
 
-            // black lines and points
-            set1.setColors(ColorTemplate.COLORFUL_COLORS);
+            set1.setColors(Color.parseColor("#3eb489"), Color.parseColor("#87ceaf") );
             set1.setSliceSpace(3f);
             set1.setSelectionShift(5f);
 
@@ -101,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
             chart.setTransparentCircleRadius(61f);
             chart.setDrawHoleEnabled(false);
             chart.getDescription().setEnabled(false);
-            // set data
             chart.setData(data);
 
         }catch (SQLException e){
@@ -130,8 +131,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
 
     @Override
@@ -187,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
             PieData data = new PieData(set1);
 
             // black lines and points
-            set1.setColors(ColorTemplate.COLORFUL_COLORS);
+            set1.setColors(Color.parseColor("#3eb489"), Color.parseColor("#87ceaf") );
             set1.setSliceSpace(3f);
 
             data.setValueTextSize(10f);
